@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+     
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <nav class="main-nav">
+    <div class="nav-left">
+      <h1>Minitool</h1>
+    </div>
+    <div class="nav-mid">
+      <a class="basic-1" href="#">home</a>
+      <a class="basic-1" href="#shop">Shop</a>
+      <a class="basic-1" href="#deals">Deals</a>
+      <a class="basic-1" href="#blogs">Blogs</a>
+    </div>
+    <div class="nav-right">
+      <a href="wishlist.html">
+        <i class="lar la-star"><span class="fav-quantity-nav">0</span></i>
+      </a>
+        <i class="las la-shopping-bag nav-bag"><span class="cart-quantity-nav">0</span></i>
+    </div>
+  </nav>
+
+  <body>
+    <div id="snackbar">thank you for purchase ..</div>
+    <div>
+      <div class="cart-overlay">
+        <div class="cart">
+          <div class="cart-top">
+            <span>SHOPPING CART</span>
+            <span class="material-icons-outlined close-icon">close</span>
+          </div>
+
+          
+
+          <div class="cart-items">
+            
+          </div>
+
+          <div class="cart-checkout">
+            <div class="subtotal">
+              <h4>Subtotal:</h4>
+              <h4 class='total-price'>$0.00</h4>
+            </div>
+            <p>Taxes, shipping and discounts codes calculated at checkout</p>
+            <a href="cart.html">
+              <button class="cart-btn">VIEW CART</button>
+            </a>
+            <button class="cart-btn green-btn">CHECK OUT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h4 class="now-available">Now Available</h4>
+        <h1>Recycled paper</h1>
+        <h1>envelope file folder</h1>
+        <a class="pre-order-btn continuous-3" href="#">Pre - Order Now</a>
+      </div>
+    </section>
+    <section class="items-sections" id='shop'>
+      <div class="model-overlay"></div>
+      <div class="new-model-overlay"></div>
+      <div class="sale-model-overlay"></div>
+      <div class="tab">
+        <button
+          class="tablinks basic-4"
+          onclick="openCity(event, 'Best sellers')"
+          id="defaultOpen"
+        >
+          Best sellers
+        </button>
+        <button
+          class="tablinks basic-4"
+          onclick="openCity(event, 'New arrivals')"
+        >
+          New arrivals
+        </button>
+        <button
+          class="tablinks basic-4"
+          onclick="openCity(event, 'Sale items')"
+        >
+          Sale items
+        </button>
+      </div>
+     
+      <div id="Best sellers" class="tabcontent">
+        
+        <div class="Best-grid"></div>
+      </div>
+
+      <div id="New arrivals" class="tabcontent">
+        <div class="New-grid"></div>
+      </div>
+
+      <div id="Sale items" class="tabcontent">
+        <div class="Sale-grid"></div>
+      </div>
+      <div class="spinner">
+  <div class="double-bounce1"></div>
+  <div class="double-bounce2"></div>
+    </div>
+    </section>
+    <section class="hot" id="deals">
+      <div class="hot-content">
+        <h4 class="hot-deal">Hot Deals</h4>
+        <h5>By full design Oxford super</h5>
+        <h5>single zipper pencil</h5>
+        <a class="pre-order-btn sec-btn continuous-3" href="#"
+          >Shop Collection</a
+        >
+      </div>
+    </section>
+    <section class="mission" id="blogs">
+      
+      <div class="mission-header">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0042/0750/9567/files/5_117d7c65-325c-4a2e-a482-8ece067a953b.png?v=1622798380"
+          alt=""
+        />
+        <h5>Our mission is to create simple, beautiful</h5>
+        <h5>objects that combine form.</h5>
+      </div>
+      <div class="mission-grid">
+        <div>
+          <div class="mission-img-container">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0042/0750/9567/files/2_3e9b82f7-e182-46b8-892e-8034dfd67874.jpg?v=1622796619"
+              alt=""
+            />
+          </div>
+          <a class="pre-order-btn third-btn continuous-3" href="#">Notebooks</a>
+        </div>
+        <div>
+          <div class="mission-img-container">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0042/0750/9567/files/3_bc79d3db-56b4-46a3-ad3a-b6b5a4fbc03f.jpg?v=1622796651"
+              alt=""
+            />
+          </div>
+          <a class="pre-order-btn third-btn continuous-3" href="#"
+            >Diaries & Planners</a
+          >
+        </div>
+        <div class="span">
+          <div class="mission-img-container">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0042/0750/9567/files/4_ffcf4515-b380-4eef-b2fc-8e9a80d7b686.jpg?v=1622797840"
+              alt=""
+            />
+          </div>
+          <a class="pre-order-btn third-btn continuous-3" href="#"
+            >Pen & Pencil Case</a
+          >
+        </div>
+      </div>
+    </section>
+    
+    <section class="on-gram">
+      <div class="mission-header">
+        <h5>On the Gram</h5>
+        <span>@minitool.insta</span>
+      </div>
+      <div class="on-gram-grid">
+        <div class="single-gram">
+          <div class="gram-img-container">
+            <img
+              src="/imgs/gram1.jpg"
+              alt=""
+            />
+            <div class="gram-overview">
+              <i class="lab la-instagram"></i>
+            </div>
+          </div>
+        </div>
+        <div class="single-gram">
+          <div class="gram-img-container">
+            <img
+              src="/imgs/gram2.jpg"
+              alt=""
+            />
+            <div class="gram-overview">
+              <i class="lab la-instagram"></i>
+            </div>
+          </div>
+        </div>
+        <div class="single-gram">
+          <div class="gram-img-container">
+            <img
+              src="/imgs/gram3.jpg"
+              alt=""
+            />
+            <div class="gram-overview">
+              <i class="lab la-instagram"></i>
+            </div>
+          </div>
+        </div>
+        <div class="single-gram">
+          <div class="gram-img-container">
+            <img
+              src="/imgs/gram4.jpg"
+              alt=""
+            />
+            <div class="gram-overview">
+              <i class="lab la-instagram"></i>
+            </div>
+          </div>
+        </div>
+        <div class="single-gram last-gram">
+          <div class="gram-img-container">
+            <img
+              src="/imgs/gram5.jpg"
+              alt=""
+            />
+            <div class="gram-overview">
+              <i class="lab la-instagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+    <script>
+      // Import the functions you need from the SDKs you need
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAtQ3QGGjmMCSmmpr6v_-IgiBbfW1SD2ug",
+
+        authDomain: "fire-commece.firebaseapp.com",
+
+        projectId: "fire-commece",
+
+        storageBucket: "fire-commece.appspot.com",
+
+        messagingSenderId: "622698756664",
+
+        appId: "1:622698756664:web:93a2cc922eb7c9a56c44cd",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.firestore();
+    </script>
+   
+    <script src="/app.js"></script>
+  </body>
+  <footer>
+    <div class="footer">
+      <div class="footer-top">
+        <div class="footer-box-left">
+          <h1 class="sub">Subscribe</h1>
+          <p class="par">Our conversation is just getting started</p>
+          <div class="input-container">
+            <input class="input" type="email" placeholder="Enter your email" />
+            <i class="las la-arrow-right arrow"></i>
+          </div>
+        </div>
+        <div class="footer-box">
+          <h4>Company</h4>
+          <div>
+            <h5 class="basic-5" href="#">My account</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Cart</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Wishlist</h5>
+          </div>
+          
+        </div>
+        <div class="footer-box">
+          <h4>Information</h4>
+          <div>
+            <h5 class="basic-5" href="#">Register</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Login</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">My Cart</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Wishlist</h5>
+          </div>
+        
+        </div>
+        <div class="footer-box">
+          <h4>Contact</h4>
+          <div>
+            <h5 class="basic-5" href="#">About us</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Contact us</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">FAQs</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Blog</h5>
+          </div>
+        </div>
+        <div class="footer-box">
+          <h4>Follow</h4>
+          <div>
+            <h5 class="basic-5" href="#">Facebook</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Pinterest</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Instagram</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Twitter</h5>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © Copyright 2021 | Shop By
+          <span class="myName">Eslam Mohamed.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+</html>

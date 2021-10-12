@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link rel="stylesheet"  href="style.css" />
+    
+    <title>Document</title>
+  </head>
+  <nav>
+    <div class="nav-left">
+      <h1>Minitool</h1>
+    </div>
+    <div class="nav-mid">
+      <a class="basic-1" href="index.html">home</a>
+      <a class="basic-1" href="index.html#shop">Shop</a>
+      <a class="basic-1" href="index.html#deals">Deals</a>
+      <a class="basic-1" href="index.html#blogs">Blogs</a>
+    </div>
+    <div class="nav-right">
+      <a href="wishlist.html">
+        <i class="lar la-star"><span class="fav-quantity-nav">0</span></i>
+      </a>
+        <i class="las la-shopping-bag nav-bag"><span class="cart-quantity-nav">0</span></i>
+    </div>
+  </nav>
+  <body>
+        <div id="snackbar">thank you for purchase ..</div>
+      <div>
+      <div class="cart-overlay">
+       
+        <div class="cart">
+          <div class="cart-top">
+            <span>SHOPPING CART</span>
+            <span class="material-icons-outlined close-icon clo">close</span>
+          </div>
+
+          
+
+          <div class="cart-items">
+           
+          </div>
+
+          <div class="cart-checkout">
+            <div class="subtotal">
+              <h4>Subtotal:</h4>
+              <h4 class='total-price'>$0.00</h4>
+            </div>
+            <p>Taxes, shipping and discounts codes calculated at checkout</p>
+            <a href="#">
+              <button class="cart-btn">VIEW CART</button>
+            </a>
+            <button class="cart-btn green-btn">CHECK OUT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-page-container">
+      <div class="shopping-cart-title">
+        <h2>Shopping Cart</h2>
+        <div class="ur-shoping">
+          <a href="index.html" class="home-cart-title">Home</a>
+          <i class="las la-angle-right arrow-cart-title"></i>
+          <h5 class="your-cart">Your Shopping Cart</h5>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="list-container">
+          <div class="list-titles">
+            <h5 class="span-for-cart">PRODUCT</h5>
+            <h5>PRICE</h5>
+            <h5>QUANTITY</h5>
+            <h5 class="align-right">TOTAL</h5>
+          </div>
+        </div>
+        <!--
+          <div class="empty-cart">
+            <i class="las la-shopping-bag"></i>
+            <span class="test">Your cart is empty.</span>
+          </div> 
+
+        -->
+
+
+        <div class="cart-list-container">
+        </div>
+
+        <div class="Checkout-cart-container">
+          <div class="subtotal-cart">
+            <h4>SUBTOTAL:</h4>
+            <h4 class="subtotal-cart-page">$20.00</h4>
+          </div>
+          <p>Taxes, shipping and discounts codes calculated at checkout</p>
+          <button class="subtotal-btn">CHECK OUT</button>
+        </div>
+      </div>
+    </div>
+     <script src="/cart.js"></script>
+  </body>
+   <footer>
+    <div class="footer">
+      <div class="footer-top">
+        <div class="footer-box-left">
+          <h1 class="sub">Subscribe</h1>
+          <p class="par">Our conversation is just getting started</p>
+          <div class="input-container">
+            <input class="input" type="email" placeholder="Enter your email" />
+            <i class="las la-arrow-right arrow"></i>
+          </div>
+        </div>
+        <div class="footer-box">
+          <h4>Company</h4>
+          <div>
+            <h5 class="basic-5" href="#">My account</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Cart</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Wishlist</h5>
+          </div>
+          
+        </div>
+        <div class="footer-box">
+          <h4>Information</h4>
+          <div>
+            <h5 class="basic-5" href="#">Register</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Login</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">My Cart</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Wishlist</h5>
+          </div>
+          
+        </div>
+        <div class="footer-box">
+          <h4>Contact</h4>
+          <div>
+            <h5 class="basic-5" href="#">About us</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Contact us</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">FAQs</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Blog</h5>
+          </div>
+        </div>
+        <div class="footer-box">
+          <h4>Follow</h4>
+          <div>
+            <h5 class="basic-5" href="#">Facebook</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Pinterest</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Instagram</h5>
+          </div>
+          <div>
+            <h5 class="basic-5" href="#">Twitter</h5>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © Copyright 2021 | Shop By
+          <span class="myName">Eslam Mohamed.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+</html>
