@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
+
     <link
       rel="stylesheet"
       href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
       rel="stylesheet"
     />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,11 +24,10 @@
       rel="stylesheet"
       href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
     />
-     
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
@@ -46,7 +45,9 @@
       <a href="wishlist.html">
         <i class="lar la-star"><span class="fav-quantity-nav">0</span></i>
       </a>
-        <i class="las la-shopping-bag nav-bag"><span class="cart-quantity-nav">0</span></i>
+      <i class="las la-shopping-bag nav-bag"
+        ><span class="cart-quantity-nav">0</span></i
+      >
     </div>
   </nav>
 
@@ -60,16 +61,12 @@
             <span class="material-icons-outlined close-icon">close</span>
           </div>
 
-          
-
-          <div class="cart-items">
-            
-          </div>
+          <div class="cart-items"></div>
 
           <div class="cart-checkout">
             <div class="subtotal">
               <h4>Subtotal:</h4>
-              <h4 class='total-price'>$0.00</h4>
+              <h4 class="total-price">$0.00</h4>
             </div>
             <p>Taxes, shipping and discounts codes calculated at checkout</p>
             <a href="cart.html">
@@ -89,7 +86,7 @@
         <a class="pre-order-btn continuous-3" href="#">Pre - Order Now</a>
       </div>
     </section>
-    <section class="items-sections" id='shop'>
+    <section class="items-sections" id="shop">
       <div class="model-overlay"></div>
       <div class="new-model-overlay"></div>
       <div class="sale-model-overlay"></div>
@@ -114,9 +111,8 @@
           Sale items
         </button>
       </div>
-     
+
       <div id="Best sellers" class="tabcontent">
-        
         <div class="Best-grid"></div>
       </div>
 
@@ -128,9 +124,9 @@
         <div class="Sale-grid"></div>
       </div>
       <div class="spinner">
-  <div class="double-bounce1"></div>
-  <div class="double-bounce2"></div>
-    </div>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
     </section>
     <section class="hot" id="deals">
       <div class="hot-content">
@@ -143,7 +139,6 @@
       </div>
     </section>
     <section class="mission" id="blogs">
-      
       <div class="mission-header">
         <img
           src="https://cdn.shopify.com/s/files/1/0042/0750/9567/files/5_117d7c65-325c-4a2e-a482-8ece067a953b.png?v=1622798380"
@@ -186,7 +181,7 @@
         </div>
       </div>
     </section>
-    
+
     <section class="on-gram">
       <div class="mission-header">
         <h5>On the Gram</h5>
@@ -195,10 +190,7 @@
       <div class="on-gram-grid">
         <div class="single-gram">
           <div class="gram-img-container">
-            <img
-              src="/imgs/gram1.jpg"
-              alt=""
-            />
+            <img src="/imgs/gram1.jpg" alt="" />
             <div class="gram-overview">
               <i class="lab la-instagram"></i>
             </div>
@@ -206,10 +198,7 @@
         </div>
         <div class="single-gram">
           <div class="gram-img-container">
-            <img
-              src="/imgs/gram2.jpg"
-              alt=""
-            />
+            <img src="/imgs/gram2.jpg" alt="" />
             <div class="gram-overview">
               <i class="lab la-instagram"></i>
             </div>
@@ -217,10 +206,7 @@
         </div>
         <div class="single-gram">
           <div class="gram-img-container">
-            <img
-              src="/imgs/gram3.jpg"
-              alt=""
-            />
+            <img src="/imgs/gram3.jpg" alt="" />
             <div class="gram-overview">
               <i class="lab la-instagram"></i>
             </div>
@@ -228,10 +214,7 @@
         </div>
         <div class="single-gram">
           <div class="gram-img-container">
-            <img
-              src="/imgs/gram4.jpg"
-              alt=""
-            />
+            <img src="/imgs/gram4.jpg" alt="" />
             <div class="gram-overview">
               <i class="lab la-instagram"></i>
             </div>
@@ -239,10 +222,7 @@
         </div>
         <div class="single-gram last-gram">
           <div class="gram-img-container">
-            <img
-              src="/imgs/gram5.jpg"
-              alt=""
-            />
+            <img src="/imgs/gram5.jpg" alt="" />
             <div class="gram-overview">
               <i class="lab la-instagram"></i>
             </div>
@@ -277,7 +257,7 @@
       firebase.initializeApp(firebaseConfig);
       const database = firebase.firestore();
     </script>
-   
+
     <script src="/app.js"></script>
   </body>
   <footer>
@@ -302,7 +282,6 @@
           <div>
             <h5 class="basic-5" href="#">Wishlist</h5>
           </div>
-          
         </div>
         <div class="footer-box">
           <h4>Information</h4>
@@ -318,7 +297,6 @@
           <div>
             <h5 class="basic-5" href="#">Wishlist</h5>
           </div>
-        
         </div>
         <div class="footer-box">
           <h4>Contact</h4>

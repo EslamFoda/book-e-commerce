@@ -2,17 +2,12 @@
 let cart = [];
 let favorites = [];
 let favStorage = localStorage.getItem("fav");
-if (favStorage === null) {
-  localStorage.setItem("fav", JSON.stringify(favorites));
-} else {
-  let storedFav = localStorage.getItem("fav");
-  favorites = JSON.parse(storedFav);
-}
 
 let storageForCart = localStorage.getItem("cart");
-if (storageForCart === null) {
+if (storageForCart === null && favStorage === null) {
+  localStorage.setItem("fav", JSON.stringify(favorites));
   localStorage.setItem("cart", JSON.stringify(cart));
-} 
+}
 const subtotalCartPage = document.querySelector(".subtotal-cart-page");
 const cartItems = document.querySelector(".cart-items");
 const cartBtn = document.querySelector(".la-shopping-bag");
@@ -25,14 +20,14 @@ const renderList = () => {
   Array.from(cartItems.children).forEach((child) => {
     child.remove();
   });
-  Array.from(cartListContainer.children).forEach(child=>{
-      child.remove();
-  })
+  Array.from(cartListContainer.children).forEach((child) => {
+    child.remove();
+  });
 };
 
-closeCart.addEventListener("click", ()=>{
-    renderList()
-    rerenderCartList();
+closeCart.addEventListener("click", () => {
+  renderList();
+  rerenderCartList();
 });
 let subTotal = 0;
 const priceElement = document.querySelector(".total-price");
@@ -53,8 +48,8 @@ const updateSubtotal = () => {
 const showCartModel = () => {
   let storageForCart = localStorage.getItem("cart");
   if (storageForCart === null) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-} 
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
   let html;
   const stored = localStorage.getItem("cart");
   cart = JSON.parse(stored);
@@ -134,9 +129,8 @@ cartOverlay.addEventListener("click", (e) => {
 });
 
 const checkoutBtn = document.querySelector(".subtotal-btn");
-checkoutBtn.addEventListener('click',()=>{
-  if(cart.length){
-
+checkoutBtn.addEventListener("click", () => {
+  if (cart.length) {
     let x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function () {
@@ -149,16 +143,16 @@ checkoutBtn.addEventListener('click',()=>{
     updateBag();
     rerenderCartList();
   }
-})
+});
 
 const navBag = document.querySelector(".cart-quantity-nav");
 const favNavbar = document.querySelector(".fav-quantity-nav");
 let bagQuantity = 0;
 const updateBag = () => {
   let quantity = 0;
-   const favStorage = localStorage.getItem("fav");
-   favorites = JSON.parse(favStorage);
-   favNavbar.textContent = favorites.length;
+  const favStorage = localStorage.getItem("fav");
+  favorites = JSON.parse(favStorage);
+  favNavbar.textContent = favorites.length;
   const storage = localStorage.getItem("cart");
   cart = JSON.parse(storage);
   let getTotal = cart.map((item) => {
@@ -212,23 +206,22 @@ cartItems.addEventListener("click", (e) => {
 });
 
 /*** this is for cart page ***/
-const rerenderCartList = ()=>{
-    let html;
-    let htmlMobile;
-     const stored = localStorage.getItem("cart");
-     cart = JSON.parse(stored);
-     if(cart.length === 0){
-         html = `
+const rerenderCartList = () => {
+  let html;
+  let htmlMobile;
+  const stored = localStorage.getItem("cart");
+  cart = JSON.parse(stored);
+  if (cart.length === 0) {
+    html = `
           <div class="empty-cart">
             <i class="las la-shopping-bag empty-bag"></i>
             <span class="test">Your cart is empty.</span>
           </div> 
          `;
-         cartListContainer.innerHTML += html;
-     } else {
-
-         cart.forEach(item=>{
-             html = `
+    cartListContainer.innerHTML += html;
+  } else {
+    cart.forEach((item) => {
+      html = `
               <div class="single-list-item" id=${item.id}>
                      <div class="product-list-wrapper">
                        <div class="list-img-container">
@@ -257,8 +250,8 @@ const rerenderCartList = ()=>{
                      </div>
                    </div>
              `;
-             cartListContainer.innerHTML += html
-             htmlMobile = `
+      cartListContainer.innerHTML += html;
+      htmlMobile = `
              <div class="single-mobile-viewcart" id=${item.id}>
             <div class="mobile-productname">
                 <div class="mobile-productname-left">
@@ -296,17 +289,14 @@ const rerenderCartList = ()=>{
         </div>
              
              `;
-              cartListContainer.innerHTML += htmlMobile;
-         })
-     }
-}
-rerenderCartList()
+      cartListContainer.innerHTML += htmlMobile;
+    });
+  }
+};
+rerenderCartList();
 
 cartListContainer.addEventListener("click", (e) => {
-  if (
-    e.target.classList.contains("del-btn")
-  ) {
-    
+  if (e.target.classList.contains("del-btn")) {
     const id = e.target.parentElement.parentElement.parentElement.id;
     filter(id);
     renderList();
@@ -316,11 +306,9 @@ cartListContainer.addEventListener("click", (e) => {
   }
 });
 
-
 cartListContainer.addEventListener("click", (e) => {
   if (e.target.textContent === "add") {
-    const id =
-      e.target.parentElement.parentElement.parentElement.id;
+    const id = e.target.parentElement.parentElement.parentElement.id;
     cart.forEach((item) => {
       if (item.id == id) {
         item.quantity++;
@@ -334,7 +322,7 @@ cartListContainer.addEventListener("click", (e) => {
     updateSubtotal();
     updateBag();
   } else if (e.target.textContent === "remove") {
-     const id = e.target.parentElement.parentElement.parentElement.id;
+    const id = e.target.parentElement.parentElement.parentElement.id;
     cart.forEach((item) => {
       if (item.id == id) {
         if (item.quantity > 1) {
@@ -352,18 +340,19 @@ cartListContainer.addEventListener("click", (e) => {
   }
 });
 
-
 /**** cart mobile ***/
-cartListContainer.addEventListener('click',(e)=>{
-  if(e.target.classList.contains('deletedFromCart')){
+cartListContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("deletedFromCart")) {
     const id = e.target.parentElement.parentElement.id;
-     filter(id);
-     renderList();
-     updateSubtotal();
-     updateBag();
-     rerenderCartList();
-  } else if(e.target.textContent === 'add'){
-    const id = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+    filter(id);
+    renderList();
+    updateSubtotal();
+    updateBag();
+    rerenderCartList();
+  } else if (e.target.textContent === "add") {
+    const id =
+      e.target.parentElement.parentElement.parentElement.parentElement
+        .parentElement.id;
     cart.forEach((item) => {
       if (item.id == id) {
         item.quantity++;
@@ -376,24 +365,23 @@ cartListContainer.addEventListener('click',(e)=>{
     rerenderCartList();
     updateSubtotal();
     updateBag();
-  } else if(e.target.textContent === 'remove'){
+  } else if (e.target.textContent === "remove") {
     const id =
       e.target.parentElement.parentElement.parentElement.parentElement
         .parentElement.id;
-         cart.forEach((item) => {
-           if (item.id == id) {
-             if (item.quantity > 1) {
-               item.quantity--;
-               item.totalPrice = item.price * item.quantity;
-               return item;
-             }
-           }
-         });
-         localStorage.setItem("cart", JSON.stringify(cart));
-         renderList();
-         rerenderCartList();
-         updateSubtotal();
-         updateBag();
+    cart.forEach((item) => {
+      if (item.id == id) {
+        if (item.quantity > 1) {
+          item.quantity--;
+          item.totalPrice = item.price * item.quantity;
+          return item;
+        }
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderList();
+    rerenderCartList();
+    updateSubtotal();
+    updateBag();
   }
-  
-})
+});

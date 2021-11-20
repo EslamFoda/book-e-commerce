@@ -1,3 +1,13 @@
+let cart = [];
+let favorites = [];
+let favStorage = localStorage.getItem("fav");
+
+let storageForCart = localStorage.getItem("cart");
+if (storageForCart === null && favStorage === null) {
+  localStorage.setItem("fav", JSON.stringify(favorites));
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -21,12 +31,11 @@ const spinner = document.querySelector(".spinner");
 let bestSellers = [];
 spinner.style.display = "block";
 const renderItemsList = (listName, html, containerName) => {
-  spinner.style.display = 'none';
-  containerName.innerHTML = ''
-    listName.forEach((item) => {
-
-      if (item.fav) {
-        html = `
+  spinner.style.display = "none";
+  containerName.innerHTML = "";
+  listName.forEach((item) => {
+    if (item.fav) {
+      html = `
           <div class="single-item" id=${item.id}>
             <div class="item-img-container">
               <img
@@ -52,9 +61,9 @@ const renderItemsList = (listName, html, containerName) => {
           </div>
           `;
 
-        containerName.innerHTML += html;
-      } else {
-        html = `
+      containerName.innerHTML += html;
+    } else {
+      html = `
           <div class="single-item" id=${item.id}>
             <div class="item-img-container">
               <img
@@ -80,28 +89,26 @@ const renderItemsList = (listName, html, containerName) => {
           </div>
           `;
 
-        containerName.innerHTML += html;
-      }
-    });
-     
+      containerName.innerHTML += html;
+    }
+  });
 };
-database.collection("best").onSnapshot(snap=>{
+database.collection("best").onSnapshot((snap) => {
   let html;
-  let result = []
- 
-  snap.docs.forEach(doc=>{
-      result.push({ ...doc.data(), id: doc.id });
-  })
-  bestSellers = result
-  renderItemsList(bestSellers, html, itemsGrid);
-})
+  let result = [];
 
+  snap.docs.forEach((doc) => {
+    result.push({ ...doc.data(), id: doc.id });
+  });
+  bestSellers = result;
+  renderItemsList(bestSellers, html, itemsGrid);
+});
 
 const model = document.querySelector(".model-overlay");
 const newModel = document.querySelector(".new-model-overlay");
 const saleModel = document.querySelector(".sale-model-overlay");
 let item;
-let favorites = [];
+
 itemsGrid.addEventListener("click", (e) => {
   let html;
   if (e.target.classList.contains("la-eye")) {
@@ -129,46 +136,54 @@ itemsGrid.addEventListener("click", (e) => {
           ),
         };
         cart.push(selectedItem);
-        localStorage.setItem('cart',JSON.stringify(cart))
+        localStorage.setItem("cart", JSON.stringify(cart));
         showCartModel();
         updateSubtotal();
         updateBag();
       });
-  } else if (e.target.classList.contains('la-star')){
+  } else if (e.target.classList.contains("la-star")) {
     const id =
       e.target.parentElement.parentElement.parentElement.parentElement.id;
-    database.collection('best').doc(id).get().then(doc=>{
-      doc.ref.update({fav: !doc.data().fav})
-    })
+    database
+      .collection("best")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        doc.ref.update({ fav: !doc.data().fav });
+      });
     if (!e.target.classList.contains("fav-active")) {
-     database.collection('best').doc(id).get().then(res=>{
-        data = res.data();
-        selectedItem = {
-          title: data.title,
-          price: data.price,
-          img: data.img,
-          desc: data.desc,
-          quantity: 1,
-          totalPrice: data.price * 1,
-          id: id,
-        };
-        favorites.push(selectedItem);
-        localStorage.setItem('fav',JSON.stringify(favorites))
-         M.toast({ html: "Item Added To Wishlist" });
-       updateBag();
-     })
+      database
+        .collection("best")
+        .doc(id)
+        .get()
+        .then((res) => {
+          data = res.data();
+          selectedItem = {
+            title: data.title,
+            price: data.price,
+            img: data.img,
+            desc: data.desc,
+            quantity: 1,
+            totalPrice: data.price * 1,
+            id: id,
+          };
+          if (favorites) {
+            favorites.push(selectedItem);
+          }
+          localStorage.setItem("fav", JSON.stringify(favorites));
+          M.toast({ html: "Item Added To Wishlist" });
+          updateBag();
+        });
     } else {
-      let filterFav = favorites.filter(item=>{
-        return item.id !== id
-      })
-      favorites = filterFav
+      let filterFav = favorites.filter((item) => {
+        return item.id !== id;
+      });
+      favorites = filterFav;
       localStorage.setItem("fav", JSON.stringify(favorites));
-       M.toast({ html: "Item Removed From Wishlist" });
+      M.toast({ html: "Item Removed From Wishlist" });
       updateBag();
     }
-    
   }
-  
 });
 
 /*** model ****/
@@ -332,7 +347,6 @@ newModel.addEventListener("click", (e) => {
             totalPrice: data.price * input.value,
             id: Math.floor(Math.random() * 1000000000000000000000000000),
           };
-          
         });
     }
   } else if (e.target.classList.contains("add-btn")) {
@@ -583,7 +597,7 @@ NewGrid.addEventListener("click", (e) => {
       });
       favorites = filterFav;
       localStorage.setItem("fav", JSON.stringify(favorites));
-       M.toast({ html: "Item Removed From Wishlist" });
+      M.toast({ html: "Item Removed From Wishlist" });
       updateBag();
     }
   }
@@ -696,7 +710,7 @@ saleGrid.addEventListener("click", (e) => {
             title: data.title,
             price: data.price,
             img: data.img,
-            desc:data.desc,
+            desc: data.desc,
             quantity: 1,
             totalPrice: data.price * 1,
             id: id,
@@ -705,27 +719,20 @@ saleGrid.addEventListener("click", (e) => {
           localStorage.setItem("fav", JSON.stringify(favorites));
           console.log(favorites);
         });
-        M.toast({ html: "Item Added To Wishlist" });
-        updateBag()
+      M.toast({ html: "Item Added To Wishlist" });
+      updateBag();
     } else {
       let filterFav = favorites.filter((item) => {
         return item.id !== id;
       });
       favorites = filterFav;
       localStorage.setItem("fav", JSON.stringify(favorites));
-      console.log(favorites);
+
       M.toast({ html: "Item Removed From Wishlist" });
       updateBag();
     }
   }
 });
-
-/**** cart  ****/
-let cart = [];
-let storageForCart = localStorage.getItem('cart')
-if (storageForCart === null){
-  localStorage.setItem('cart',JSON.stringify(cart))
-} 
 
 const cartItems = document.querySelector(".cart-items");
 const cartBtn = document.querySelector(".la-shopping-bag");
@@ -748,7 +755,7 @@ const updateSubtotal = () => {
   let getTotal = cart.map((item) => {
     return item.totalPrice;
   });
- 
+
   getTotal.forEach((price) => {
     totalPrice += parseInt(price);
   });
@@ -760,11 +767,11 @@ const showCartModel = () => {
   let storageForCart = localStorage.getItem("cart");
   if (storageForCart === null) {
     localStorage.setItem("cart", JSON.stringify(cart));
-  } 
+  }
   let html;
-  const stored = localStorage.getItem('cart')
-  cart = JSON.parse(stored)
-  
+  const stored = localStorage.getItem("cart");
+  cart = JSON.parse(stored);
+
   if (cart.length === 0) {
     html = `
     <div class="empty-cart">
@@ -813,7 +820,7 @@ const filter = (id) => {
     return item.id != id;
   });
   cart = remove;
-  localStorage.setItem('cart',JSON.stringify(cart))
+  localStorage.setItem("cart", JSON.stringify(cart));
 };
 cartOverlay.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-icon")) {
@@ -823,14 +830,14 @@ cartOverlay.addEventListener("click", (e) => {
     showCartModel();
     updateSubtotal();
     updateBag();
-  }else if (e.target.textContent === 'CHECK OUT' && cart.length){
+  } else if (e.target.textContent === "CHECK OUT" && cart.length) {
     let x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function () {
       x.className = x.className.replace("show", "");
     }, 3000);
-    cart = []
-    localStorage.setItem('cart',JSON.stringify(cart))
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
     renderList();
     showCartModel();
     updateSubtotal();
@@ -842,10 +849,12 @@ const navBag = document.querySelector(".cart-quantity-nav");
 let bagQuantity = 0;
 const updateBag = () => {
   let quantity = 0;
-  
-  const favStorage = localStorage.getItem('fav')
-  favorites = JSON.parse(favStorage)
-  favNavbar.textContent = favorites.length
+
+  const favStorage = localStorage.getItem("fav");
+  favorites = JSON.parse(favStorage);
+  if (favorites) {
+    favNavbar.textContent = favorites.length;
+  }
   const storage = localStorage.getItem("cart");
   cart = JSON.parse(storage);
   let getTotal = cart.map((item) => {
@@ -858,7 +867,7 @@ const updateBag = () => {
   navBag.textContent = `${bagQuantity}`;
 };
 updateSubtotal();
-updateBag()
+updateBag();
 /**** updating the cart items ***/
 cartItems.addEventListener("click", (e) => {
   if (e.target.textContent === "add") {
@@ -888,22 +897,10 @@ cartItems.addEventListener("click", (e) => {
         }
       }
     });
-    localStorage.setItem('cart',JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart));
     renderList();
     showCartModel();
     updateSubtotal();
     updateBag();
-  } 
-  
+  }
 });
-
-
-/** favourites */
-let favStorage = localStorage.getItem("fav");
-if (favStorage === null) {
-  localStorage.setItem("fav", JSON.stringify(favorites));
-} else {
-  let storedFav = localStorage.getItem('fav')
-  favorites = JSON.parse(storedFav)
-  
-}
